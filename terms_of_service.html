@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - SmartShelf</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="image.png">
+    <style>
+        :root {
+            --dark-blue: #000248;
+            --blue: #00085B;
+            --dark-purple: #1f1f88;
+            --purple: #6863DF;
+            --light-yellow: #fcfcc5;
+            --white: #FFFFFF;
+            --light-gray: #f5f5f5;
+            --pink:#f282dd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark-blue) 10%, var(--pink) 30%, var(--purple) 50%, var(--dark-blue) 70%);
+            color: var(--white);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            background: rgba(0, 2, 72, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--light-yellow),var(--pink), var(--purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+            color: var(--light-yellow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--light-yellow);
+        }
+
+        .nav-links a.active {
+            color: var(--light-yellow);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--light-yellow);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus-within {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(104, 99, 223, 0.5);
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--white);
+            width: 200px;
+            padding: 0.3rem;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-box i {
+            color: var(--light-yellow);
+            cursor: pointer;
+        }
+
+        .login-btn {
+            background: linear-gradient(90deg, var(--purple), var(--dark-purple),var(--pink));
+            color: var(--white);
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(104, 99, 223, 0.4);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(104, 99, 223, 0.6);
+        }
+
+        /* Main Content */
+        .main-container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--light-yellow), var(--pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .last-updated {
+            text-align: center;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* Terms Content */
+        .terms-content {
+            background: rgba(0, 2, 72, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 100px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-yellow);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(104, 99, 223, 0.5);
+        }
+
+        .section h3 {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--light-yellow);
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .section ul, .section ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .highlight-box {
+            background: rgba(104, 99, 223, 0.1);
+            border-left: 4px solid var(--purple);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--light-yellow);
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--light-yellow);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 2, 72, 0.95);
+            padding: 3rem 5% 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-yellow);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .footer-column ul li a:hover {
+            opacity: 1;
+            color: var(--light-yellow);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--light-yellow);
+            color: var(--dark-blue);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 2rem 1rem;
+            }
+            
+            .terms-content {
+                padding: 1.5rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .search-box input {
+                width: 150px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .search-box {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <i class="fas fa-book-open"></i>
+            SmartShelf
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#">Categories</a>
+            <a href="nexus-ai.html">Nexus AI</a>
+            <a href="#">PlanCraft</a>
+            <a href="#" class="active">Terms</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+            </div>
+            <button class="login-btn">Login</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="page-header">
+            <h1>Terms of Service</h1>
+            <p>Please read these terms carefully before using SmartShelf services</p>
+        </div>
+        
+        <div class="last-updated">
+            Last updated: December 1, 2025
+        </div>
+
+            <!-- Terms Content -->
+            <main class="terms-content">
+                <section id="acceptance" class="section">
+                    <h2>1. Acceptance of Terms</h2>
+                    <p>By accessing or using SmartShelf ("the Service"), you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this Service.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Important:</strong> These terms constitute a legally binding agreement between you and SmartShelf regarding your use of the Service.</p>
+                    </div>
+                    
+                    <p>The materials contained in this Service are protected by applicable copyright and trademark law. Your use of any materials or information on this Service is entirely at your own risk, for which we shall not be liable.</p>
+                </section>
+
+                <section id="accounts" class="section">
+                    <h2>2. User Accounts</h2>
+                    <p>To access certain features of the Service, you may be required to register for an account. You agree to provide accurate, current, and complete information during the registration process.</p>
+                    
+                    <h3>Account Responsibilities</h3>
+                    <ul>
+                        <li>You are responsible for safeguarding your account password</li>
+                        <li>You agree not to share your account credentials with others</li>
+                        <li>You must notify us immediately of any unauthorized use of your account</li>
+                        <li>You are responsible for all activities that occur under your account</li>
+                    </ul>
+                    
+                    <p>We reserve the right to disable any user account at our sole discretion if we believe you have violated any provision of these Terms.</p>
+                </section>
+
+                <section id="services" class="section">
+                    <h2>3. Services Description</h2>
+                    <p>SmartShelf provides a platform for developer students to access programming books, articles, and educational resources. Our services include:</p>
+                    
+                    <ul>
+                        <li>Access to curated programming books and resources</li>
+                        <li>AI-powered assistance through Nexus AI</li>
+                        <li>Study planning tools via PlanCraft</li>
+                        <li>Community features and discussion forums</li>
+                        <li>Personalized learning recommendations</li>
+                    </ul>
+                    
+                    <p>We reserve the right to modify, suspend, or discontinue any aspect of the Service at any time, including the availability of any feature, database, or content.</p>
+                </section>
+
+                <section id="intellectual" class="section">
+                    <h2>4. Intellectual Property</h2>
+                    <p>The Service and its original content, features, and functionality are owned by SmartShelf and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.</p>
+                    
+                    <h3>Our Content</h3>
+                    <p>All materials provided on SmartShelf, including but not limited to text, graphics, logos, images, and software, are the property of SmartShelf or its content suppliers and protected by copyright laws.</p>
+                    
+                    <h3>Your License</h3>
+                    <p>We grant you a limited, non-exclusive, non-transferable license to access and use the Service for your personal, non-commercial educational purposes. This license does not include any resale or commercial use of the Service.</p>
+                </section>
+
+                <section id="user-content" class="section">
+                    <h2>5. User Content</h2>
+                    <p>Users may post, upload, or otherwise contribute content to the Service ("User Content"). You retain ownership of any intellectual property rights that you hold in that User Content.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>By submitting User Content:</strong> You grant SmartShelf a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, and display such Content in connection with providing the Service.</p>
+                    </div>
+                    
+                    <p>You are solely responsible for your User Content and the consequences of posting or publishing it. We do not endorse any User Content or any opinion, recommendation, or advice expressed therein.</p>
+                </section>
+
+                <section id="prohibited" class="section">
+                    <h2>6. Prohibited Activities</h2>
+                    <p>When using SmartShelf, you agree not to:</p>
+                    
+                    <ul>
+                        <li>Violate any applicable laws or regulations</li>
+                        <li>Infringe upon the intellectual property rights of others</li>
+                        <li>Harass, abuse, or harm another person</li>
+                        <li>Submit false or misleading information</li>
+                        <li>Upload or transmit viruses or any other malicious code</li>
+                        <li>Attempt to gain unauthorized access to our systems</li>
+                        <li>Interfere with or disrupt the integrity or performance of the Service</li>
+                        <li>Use the Service for any illegal or unauthorized purpose</li>
+                    </ul>
+                </section>
+
+                <section id="privacy" class="section">
+                    <h2>7. Privacy Policy</h2>
+                    <p>Your privacy is important to us. Our Privacy Policy explains how we collect, use, and protect your personal information. By using the Service, you agree to the collection and use of information in accordance with our Privacy Policy.</p>
+                    
+                    <p>We implement security measures to protect your information, but no method of transmission over the Internet is 100% secure. We cannot guarantee absolute security of your data.</p>
+                </section>
+
+                <section id="termination" class="section">
+                    <h2>8. Termination</h2>
+                    <p>We may terminate or suspend your account and bar access to the Service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever, including but not limited to a breach of the Terms.</p>
+                    
+                    <p>Upon termination, your right to use the Service will immediately cease. If you wish to terminate your account, you may simply discontinue using the Service or contact us to delete your account.</p>
+                </section>
+
+                <section id="disclaimer" class="section">
+                    <h2>9. Disclaimer</h2>
+                    <p>The Service is provided on an "AS IS" and "AS AVAILABLE" basis. SmartShelf makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Educational Purpose Only:</strong> The content provided on SmartShelf is for educational purposes only. We do not guarantee the accuracy, completeness, or usefulness of any information on the Service.</p>
+                    </div>
+                </section>
+
+                <section id="limitation" class="section">
+                    <h2>10. Limitation of Liability</h2>
+                    <p>In no event shall SmartShelf, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:</p>
+                    
+                    <ul>
+                        <li>Your access to or use of or inability to access or use the Service</li>
+                        <li>Any conduct or content of any third party on the Service</li>
+                        <li>Any content obtained from the Service</li>
+                        <li>Unauthorized access, use or alteration of your transmissions or content</li>
+                    </ul>
+                </section>
+
+                <section id="changes" class="section">
+                    <h2>11. Changes to Terms</h2>
+                    <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect.</p>
+                    
+                    <p>By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.</p>
+                </section>
+
+                <section id="contact" class="section">
+                    <h2>12. Contact Information</h2>
+                    <p>If you have any questions about these Terms, please contact us:</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <h4>Email</h4>
+                            <p>smartshelf@gmail.com</p>
+                        </div>
+
+                        </div>
+                    </div>
+                </section>
+            </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>SmartShelf</h3>
+                <p>Your ultimate platform for developer students to access books, articles, and tools for mastering programming and technology.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="nexus-ai.html">Nexus AI</a></li>
+                    <li><a href="#">PlanCraft</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Books</a></li>
+                    <li><a href="#">Articles</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="terms.html" class="active">Terms of Service</a></li>
+                    <li><a href="#">contact us</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SmartShelf. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+</body>
+</html>
