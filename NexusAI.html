@@ -525,18 +525,13 @@
     
     <main class="chat-area">
         <div class="chat-header">
-            <div class="ai-avatar">
-                
-            </div>
+
             <h1>Nuxus AI</h1>
         </div>
         
         <div class="chat-container" id="chatContainer">
             
             <div class="welcome-message" id="welcomeMessage">
-                <div class="welcome-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
                 <h2>How can I help you today?</h2>
                 <p>Ask me anything about programming, web development, or computer science concepts. I'm here to help you learn and solve problems.</p>
             </div>
@@ -726,7 +721,7 @@
         }
         
         const avatarClass = sender === 'user' ? 'user-avatar-small' : 'ai-avatar-small';
-        const avatarIcon = sender === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+        const avatarIcon = sender === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fa-brands fa-android"></i>';
         const senderName = sender === 'user' ? 'You' : 'AI Assistant';
         
        
