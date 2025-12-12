@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartShelf - Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="image.png">
     <style>
         :root {
             --dark-blue: #000248;
             --blue: #00085B;
             --dark-purple: #00008F;
             --purple: #6863DF;
-            --light-yellow: #FFFF9E;
+            --light-yellow: #ffffd0;
             --white: #FFFFFF;
             --light-gray: #f5f5f5;
             --pink:#f282dd;
@@ -36,7 +35,7 @@
             padding: 2rem;
         }
 
-       
+        /* Navbar Styles */
         nav {
             display: flex;
             justify-content: space-between;
@@ -55,7 +54,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            background: linear-gradient(90deg, var(--light-yellow), var(--purple));
+            background: linear-gradient(90deg, var(--light-yellow), var(--pink), var(--purple));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -140,7 +139,7 @@
             cursor: pointer;
         }
 
-        
+        /* Auth Container */
         .auth-container {
             width: 100%;
             max-width: 420px;
@@ -148,7 +147,7 @@
             overflow: hidden;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            margin-top: 120px; 
+            margin-top: 120px;
             transition: height 0.5s ease-in-out;
         }
 
@@ -165,12 +164,12 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        
+        /* Login form is more compact */
         .login-form {
             padding: 1rem;
         }
 
-        
+        /* Signup form has more space for additional fields */
         .signup-form {
             padding: 2.5rem;
         }
@@ -270,7 +269,7 @@
         .submit-btn {
             width: 100%;
             padding: 0.8rem;
-            background: linear-gradient(90deg, var(--purple), var(--dark-purple));
+            background: linear-gradient(90deg, var(--purple), var(--dark-purple), var(--pink));
             color: var(--white);
             border: none;
             border-radius: 10px;
@@ -334,7 +333,7 @@
         }
 
         .social-btn.google {
-            color: #DB4437;
+            color: #ffffff;
         }
 
         .social-btn.github {
@@ -427,6 +426,7 @@
             color: transparent;
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
             .auth-container {
                 max-width: 100%;
@@ -494,7 +494,7 @@
     </style>
 </head>
 <body>
-    
+   
     <nav>
         <div class="logo">
             <i class="fas fa-book-open"></i>
@@ -502,22 +502,22 @@
         </div>
 
         <div class="nav-links">
-            <a href="index">Home</a>
+            <a href="index.html">Home</a>
             <a href="#">Categories</a>
-            <a href="NexusAI">Nexus AI</a>
-            <a href="PlanCraft">PlanCraft</a>
+            <a href="NexusAI.html">Nexus AI</a>
+            <a href="PlanCraft.html">PlanCraft</a>
         </div>
 
         <div class="nav-right">
-            <div class="search-box"> 
+            <div class="search-box">
                 <input type="text" placeholder="Search...">
                 <i class="fas fa-search"></i>
             </div>
-
+            
         </div>
     </nav>
 
-   
+  
     <div class="auth-container" id="authContainer">
         <div class="forms-container" id="formsContainer">
             
@@ -652,7 +652,7 @@
             setDoc
         } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
 
-        //Firebase configuration
+        
         const firebaseConfig = {
             apiKey: "AIzaSyDrsNiPWUyZS4oi90cPh-u3gaI_9VSbt04",
             authDomain: "smartshelf-1dc7c.firebaseapp.com",
@@ -663,12 +663,12 @@
             measurementId: "G-VZ18V95S5N"
         };
 
-        // Firebase
+      
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // DOM 
+   
         const authContainer = document.getElementById('authContainer');
         const formsContainer = document.getElementById('formsContainer');
         const loginFormWrapper = document.getElementById('loginFormWrapper');
@@ -682,19 +682,7 @@
         const loginPasswordToggle = document.getElementById('loginPasswordToggle');
         const signupPasswordToggle = document.getElementById('signupPasswordToggle');
         const confirmPasswordToggle = document.getElementById('confirmPasswordToggle');
-        const navLoginBtn = document.getElementById('navLoginBtn');
 
-        //  show login form if on signup form
-        navLoginBtn.addEventListener('click', () => {
-            if (formsContainer.classList.contains('show-signup')) {
-                authContainer.style.height = loginFormWrapper.scrollHeight + 'px';
-                setTimeout(() => {
-                    formsContainer.classList.remove('show-signup');
-                }, 10);
-            }
-        });
-
-        // change  between login and signup 
         showSignup.addEventListener('click', (e) => {
             e.preventDefault();
             authContainer.style.height = signupFormWrapper.scrollHeight + 'px';
@@ -711,18 +699,18 @@
             }, 10);
         });
 
-        // Show forgot password modal
+       
         forgotPasswordLink.addEventListener('click', (e) => {
             e.preventDefault();
             forgotPasswordModal.style.display = 'flex';
         });
 
-        // Close modal
+       
         closeModal.addEventListener('click', () => {
             forgotPasswordModal.style.display = 'none';
         });
 
-        // Back to login link from modal 
+        
         backToLogin.addEventListener('click', (e) => {
             e.preventDefault();
             forgotPasswordModal.style.display = 'none';
@@ -730,14 +718,14 @@
             authContainer.style.height = loginFormWrapper.scrollHeight + 'px';
         });
 
-        // Close modal when we clicking outside
+       
         window.addEventListener('click', (e) => {
             if (e.target === forgotPasswordModal) {
                 forgotPasswordModal.style.display = 'none';
             }
         });
 
-        // Password eye fc
+      
         function setupPasswordToggle(toggleBtn, passwordField) {
             toggleBtn.addEventListener('click', () => {
                 const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -750,7 +738,7 @@
         setupPasswordToggle(signupPasswordToggle, document.getElementById('signupPassword'));
         setupPasswordToggle(confirmPasswordToggle, document.getElementById('confirmPassword'));
 
-        //SIGN UP FUNCTIONALITY
+
         const signupForm = document.getElementById("signupForm");
 
         signupForm.addEventListener("submit", async (e) => {
@@ -777,14 +765,13 @@
                 });
 
                 alert("Account created!");
-                window.location.href = "homepage.html";
+                window.location.href = "index.html";
             } catch (error) {
                 alert(error.message);
             }
         });
 
-        //LOGIN FUNCTIONALITY
-       
+    
         const loginForm = document.getElementById("loginForm");
 
         loginForm.addEventListener("submit", async (e) => {
@@ -795,14 +782,14 @@
 
             try {
                 await signInWithEmailAndPassword(auth, email, password);
-                alert("Welcome!");
-                window.location.href = "homepage.html";
+                alert("Welcome back!");
+                window.location.href = "index.html";
             } catch (error) {
                 alert(error.message);
             }
         });
 
-        // PASSWORD RESET
+
         const forgotPasswordForm = document.getElementById("forgotPasswordForm");
 
         forgotPasswordForm.addEventListener("submit", async (e) => {
@@ -819,8 +806,8 @@
             }
         });
 
-       
+        // Set initial container height
+        authContainer.style.height = loginFormWrapper.scrollHeight + 'px';
     </script>
 </body>
-
 </html>
